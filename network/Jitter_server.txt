@@ -1,0 +1,52 @@
+#include<stdio.h>
+#include<sys/types.h>
+#include<sys/socket.h>
+#include<stdlib.h>
+#include<netinet/in.h>
+#include<string.h>
+#include<sys/time.h>
+int main(int argc,char *argv[])
+{
+ int portn,n,sfd,nsfd,fp,b,clilen,c=0,gp[6];
+ double t1,t2,t3;
+struct sockaddr_in serv_addr,cli_addr;
+struct timeval tl;
+char buffer[256];
+sfd=socket(AF_INET,SOCK_STREAM,0);
+if(sfd<0)
+{
+printf("Socket is unsuccessful\n");
+exit(0);
+}
+bzero((char *)&serv_addr,sizeof(serv_addr));
+portn=atoi(argv[1]);
+serv_addr.sin_family=AF_INET;
+serv_addr.sin_port=htons(portn);
+serv_addr.sin_addr.s_addr=INADDR_ANY;
+b=bind(sfd,(struct sockaddr*)&serv_addr,sizeof(serv_addr));
+if(b<0)
+{
+ printf("Bind is not occur\n");
+exit(0);
+}
+listen(sfd,5);
+clilen=sizeof(cli_addr);
+nsfd=accept(sfd,(struct sockaddr*)&cli_addr,&clilen);
+if(nsfd<0)
+{
+printf("Error in accept\n");
+exit(0);
+}
+fp=fopen("gnp","w");
+while(c<5)
+{
+ read(nsfd,&t1,sizeof(t1));
+ gettimeofday(&tl,NULL);
+ t2=(tl.tv_sec)*1000.0+(tl.tv_usec)/1000.0;
+t3=t2-t1;
+printf("%f\n",t3);
+fprintf(fp,"%f\n",t3);
+c++;
+}
+return 0;
+}

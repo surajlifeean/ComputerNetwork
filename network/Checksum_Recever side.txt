@@ -1,0 +1,39 @@
+//receiver side
+
+printf("\n at the receiver side:\n");
+
+printf("enter the 1st data:\n");
+
+for(i=n­1;i>=0;i­­)
+
+{
+
+a1[i]=getche();
+
+a1[i]­=48;
+
+}
+
+printf("\nenter the 2nd data:\n");
+
+for(i=n­1;i>=0;i­­)
+
+{
+
+b1[i]=getche();
+
+b1[i]­=48;
+
+}
+
+printf("\nenter the 3nd data:\n");
+
+for(i=n­1;i>=0;i­­)
+
+{
+
+c1[i]=getche();
+
+c1[i]­=48;
+
+}

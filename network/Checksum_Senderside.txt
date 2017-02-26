@@ -1,0 +1,43 @@
+//CheckSum:
+
+#include<stdio.h>
+
+#include<conio.h>
+
+void main()
+
+{
+
+int a[10],b[10],sum[10],chk[10],cs[10],i,n,p;
+
+int a1[10],b1[10],sum1[10],chk1[10],cs1[10],c1[10],carry=0,p1,check=0;
+
+//sender side:
+
+printf("\n enter no. of bits per segment:\n");
+
+scanf("%d",&n);
+
+printf("enter the 1st data:\n");
+
+for(i=n­1;i>=0;i­­)
+
+{
+
+a[i]=getche();
+
+a[i]­=48;
+
+}
+
+printf("\nenter the 2nd data:\n");
+
+for(i=n­1;i>=0;i­­)
+
+{
+
+b[i]=getche();
+
+b[i]­=48;
+
+}

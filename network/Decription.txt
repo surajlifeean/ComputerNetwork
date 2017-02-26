@@ -1,0 +1,34 @@
+#include<stdio.h>
+char source[26]={"abcdefghijklmnopqrstuvwxyz"};
+char target[26]={"defabcjklghipqrmnovwxstuzy"};
+ main()
+{
+	FILE *fs,*ft;
+	int i,val;
+	char ch;
+	ft=fopen("plain.txt","w");
+	fs=fopen("cipher.txt","r");
+	while(1)
+	{
+		ch=fgetc(fs);
+		if(ch==EOF) break;
+		val=-1;
+		for(i=0;i<=25;i++)
+		{
+			if(ch==source[i])
+			{
+				val=i;
+				break;
+			}
+		}
+			if(val==-1)
+			{
+				fprintf(ft,"%c",ch);
+			}
+			else
+			{
+				fprintf(ft,"%c",target[val]);
+			}
+		}
+		return 0;
+}
